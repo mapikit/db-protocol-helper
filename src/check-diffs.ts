@@ -1,10 +1,16 @@
-import Diff from "deep-diff";
+import { diff } from "deep-diff";
+import { ObjectDefinition } from "@meta-system/object-definition";
 
-// WIP
+type SchemasType = { id : string, name : string, format : ObjectDefinition };
+
 export class CheckDiffs {
-  public checkForChanges (previous : Array<object>, current : Array<object>) : object {
-    return Diff.diff(previous, current);
+  public checkForChanges (previous : Array<SchemasType>, current : Array<SchemasType>) : Record<string, object> {
+    const diffs : Record<string, object> = {};
+    previous.forEach(schema => {
+      const schemaId = schema.id;
+      const currentVersion = current.find(currentSchema => currentSchema.id === schemaId);
+      diffs[schema.id] = diff(schema, currentVersion);
+    });
+    return diffs;
   }
-  // Check for every combination of previous array to find minimal diff
 }
-

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mapikit/db-protocol-helper#readme",
   "dependencies": {
+    "@meta-system/object-definition": "^1.0.2",
     "deep-diff": "^1.0.2"
   },
   "devDependencies": {
