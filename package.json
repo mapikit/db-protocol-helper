@@ -11,6 +11,14 @@
     "type": "git",
     "url": "git+https://github.com/mapikit/db-protocol-helper.git"
   },
+  "mocha": {
+    "require": [
+      "ts-node/register"
+    ],
+    "timeout": 0,
+    "spec": "./test/**/*.ts",
+    "recursive": true
+  },
   "keywords": [
     "meta-system",
     "helper",

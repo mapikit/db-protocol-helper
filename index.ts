@@ -13,4 +13,4 @@
 // - Version
 // - Description
 // - Protocol entrypoint (file where the class is exported)
-// - MainClass (Exported class constructor)
+// - MainClass (name of the Exported class constructor)
