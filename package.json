@@ -1,6 +1,6 @@
 {
   "name": "@meta-system/db-protocol-helper",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A helper to facilitate the creation of meta-system database protocols",
   "main": "index.js",
   "scripts": {
@@ -33,13 +33,17 @@
   "homepage": "https://github.com/mapikit/db-protocol-helper#readme",
   "dependencies": {
     "@meta-system/object-definition": "^1.0.2",
-    "deep-diff": "^1.0.2"
+    "chalk": "^4.1.2",
+    "deep-diff": "^1.0.2",
+    "meta-function-helper": "^0.2.3",
+    "semver": "^7.3.5"
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",
     "@types/deep-diff": "^1.0.1",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.7",
+    "@types/semver": "^7.3.9",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "chai": "^4.3.4",

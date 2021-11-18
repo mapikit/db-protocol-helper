@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line max-lines-per-function
 const getFileGetterFunction = (path : string, fileNameAndFormat : string) : () => Promise<unknown> => {
   return async () : Promise<unknown> => {
     const pathLib = await import("path");
@@ -6,9 +7,15 @@ const getFileGetterFunction = (path : string, fileNameAndFormat : string) : () =
     const resolvedPath = pathLib.resolve(path, fileNameAndFormat);
     const isJs = fileNameAndFormat.endsWith(".js") || fileNameAndFormat.endsWith(".json");
 
-    const fileResult = isJs ? await import(resolvedPath)
-      : await fileLib.promises.readFile(resolvedPath, "utf-8");
-    return fileResult;
+    if (isJs) {
+      const importedData = await import(resolvedPath)
+        .catch((err) => {
+          throw Error(err + " -- The file is probably not a valid JS or JSON file");
+        });
+      return importedData;
+    }
+
+    return fileLib.promises.readFile(resolvedPath, "utf-8");;
   };
 };
 
